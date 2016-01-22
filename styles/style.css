@@ -1,18 +1,36 @@
 html {
   font-family: 'Trebuchet MS' !important; }
 
+.view.ng-leave {
+  -webkit-animation: fadeOut 0.5s both ease-in;
+  -moz-animation: fadeOut 0.5s both ease-in;
+  animation: fadeOut 0.5s both ease-in; }
+
+.view.ng-enter {
+  -webkit-animation: fadeIn 0.5s both ease-in;
+  -moz-animation: fadeIn 0.5s both ease-in;
+  animation: fadeIn 0.5s both ease-in;
+  animation-delay: 0.5s; }
+
+.welcome {
+  width: 100%; }
+
+.page {
+  width: 85%;
+  height: 100%;
+  float: right; }
+
 .clear {
   clear: both; }
 
-.view > * {
-  height: 100vh; }
+html {
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important; }
 
-.welcome {
-  background: url("/img/landingphotoblue.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; }
+body {
+  background-color: transparent; }
 
 .center {
   width: 50%;
@@ -27,14 +45,14 @@ html {
 
 .welcome a {
   width: 28%;
-  margin-left: 34%;
+  margin-left: 35%;
   text-align: center; }
 
 .center {
   margin: 0 auto;
   max-height: 100%; }
 
-.btn, .btnBlue, .btnGrey, .btnLightBlue, .btnWhite {
+.btn, .btnBrand, .btnGrey, .btnlightBrand, .btnWhite {
   display: block;
   padding: 10px 15px;
   color: #FFF;
@@ -46,60 +64,34 @@ html {
   border-radius: 5px;
   transition: all 0.5s; }
 
-.btn:hover, .btnBlue:hover, .btnGrey:hover, .btnLightBlue:hover, .btnWhite:hover {
+h1 {
+  padding-top: 10px;
+  text-transform: uppercase;
+  color: #2C5FAC !important; }
+
+.btn:hover, .btnBrand:hover, .btnGrey:hover, .btnlightBrand:hover, .btnWhite:hover {
   background-color: #2C5FAC; }
 
 .btnWhite:hover {
   color: white; }
 
-.btnBlue {
+.btnBrand {
   background-color: #2C5FAC; }
 
 .btnGrey {
   background-color: #4D4D4F; }
 
-.btnLightBlue {
+.btnlightBrand {
   background-color: #97B2BF; }
 
 .btnWhite {
   background-color: white;
   color: #2C5FAC;
   margin-top: 35px;
-  width: 58%;
-  margin-left: 18%;
   font-weight: bold;
-  text-transform: uppercase; }
-
-.home .sidebar {
-  width: 20%;
-  float: left;
-  height: 100%;
-  background-color: #4D4D4F; }
-
-.home .sidebar .logo {
-  max-width: 70%;
-  padding-left: 15%;
-  padding-right: 15%;
-  padding-top: 48px;
-  padding-bottom: 45px;
-  background-color: #2C5FAC;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover; }
-
-.social .icon {
-  max-width: 50px;
-  padding-top: 10px;
-  padding-bottom: 5px; }
-
-.social {
-  padding-left: 11%;
-  margin-left: 18%;
-  margin-top: 35px;
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
-  margin-right: 16%; }
+  text-transform: uppercase;
+  margin-left: 20px;
+  margin-right: 20px; }
 
 @keyframes fadeOut {
   from {
@@ -126,19 +118,12 @@ html {
     transform: translateX(0); }
   to {
     transform: translateX(-100%); } }
-.ng-leave {
-  -webkit-animation: fadeOut 0.5s both ease-in;
-  -moz-animation: fadeOut 0.5s both ease-in;
-  animation: fadeOut 0.5s both ease-in; }
-
-.ng-enter {
-  -webkit-animation: fadeIn 0.5s both ease-in;
-  -moz-animation: fadeIn 0.5s both ease-in;
-  animation: fadeIn 0.5s both ease-in; }
+.banner {
+  width: 100%; }
 
 .sidebar .nav {
   text-align: center;
-  padding-left: 10px;
+  padding-left: 0;
   list-style-type: none !important; }
 
 .sidebar .nav li {
@@ -152,5 +137,124 @@ html {
 
 .sidebar .nav a:hover {
   color: #97B2BF !important; }
+
+.sidebar {
+  width: 15%;
+  float: left;
+  min-height: 100%;
+  background-color: #4D4D4F;
+  position: absolute;
+  left: 0px;
+  z-index: 1; }
+
+.sidebar .logo {
+  width: 100%;
+  padding-left: 15%;
+  padding-right: 15%;
+  padding-top: 48px;
+  padding-bottom: 45px;
+  background-color: #2C5FAC;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+.social .icon {
+  max-width: 50px;
+  padding-top: 10px;
+  padding-bottom: 5px; }
+
+.social {
+  text-align: center;
+  margin-top: 35px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white; }
+
+.content {
+  padding-left: 80px;
+  padding-top: 30px;
+  margin-right: 10%;
+  line-height: 28px;
+  margin-bottom: 100px;
+  color: #4D4D4F; }
+
+.section hr {
+  margin: 50px 0px; }
+
+a {
+  text-decoration: none;
+  color: #2C5FAC; }
+
+a:hover {
+  color: #97B2BF; }
+
+.btnBrand.ng-leave {
+  display: none !important; }
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* Styles */ }
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Styles */ }
+/* Sidebar Styles */
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.sidebar-nav li {
+  text-indent: 20px;
+  line-height: 40px; }
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #999999; }
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.2); }
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none; }
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px; }
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999; }
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none; }
+
+@media (min-width: 768px) {
+  #wrapper {
+    padding-left: 250px; }
+
+  #wrapper.toggled {
+    padding-left: 0; }
+
+  #sidebar-wrapper {
+    width: 250px; }
+
+  #wrapper.toggled #sidebar-wrapper {
+    width: 0; }
+
+  #page-content-wrapper {
+    padding: 20px;
+    position: relative; }
+
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0; } }
 
 /*# sourceMappingURL=style.css.map */

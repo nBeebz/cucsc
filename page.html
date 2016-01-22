@@ -1,0 +1,15 @@
+<div ng-if="noSidebar == undefined" ng-include="'sidebar.html'" ng-cont></div>
+<div class="page">
+	<div class="row">
+	<img class="banner" src="img/{{page.banner}}" alt="" class="col-lg-12"/>
+	</div>
+	<div class="content">
+		<h1>{{ page.title }}</h1>
+		<div class="section" ng-repeat="section in page.sections">
+			<hr>
+			<h2>{{section.heading}}</h2>
+			<div class="text" ng-bind-html="section.text"></div>
+		</div>
+		<div ng-if="page.id == 'register'" ng-include="'registration.html'"></div>
+	</div>
+</div>

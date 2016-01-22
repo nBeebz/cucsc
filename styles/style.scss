@@ -1,9 +1,11 @@
-﻿// Variables
-$brandBlue: #2C5FAC;
+// Variables
+$brand: #2C5FAC;
 $darkGrey: #4D4D4F;
-$lightBlue: #97B2BF;
+$lightBrand: #97B2BF;
 
 $ws: 15px;
+
+$fadeTime: 0.5s;
 
 // Mixins
 @mixin border-radius($radius) {
@@ -13,26 +15,55 @@ $ws: 15px;
           border-radius: $radius;
 }
 
-@mixin animation($animation){
-	-webkit-animation:$animation 0.5s both ease-in;
-	-moz-animation:$animation 0.5s both ease-in;
-	animation:$animation 0.5s both ease-in
+
+@mixin fade-in(){
+	-webkit-animation: fadeIn $fadeTime both ease-in;
+	-moz-animation:fadeIn $fadeTime both ease-in;
+	animation:fadeIn $fadeTime both ease-in
+}
+
+@mixin fade-out(){
+	-webkit-animation:fadeOut $fadeTime both ease-in;
+	-moz-animation:fadeOut $fadeTime both ease-in;
+	animation:fadeOut $fadeTime both ease-in
 }
 
 html{
 	font-family: 'Trebuchet MS' !important;
 }
 
-.clear{clear:both;}
 
-.view>*{ height: 100vh; }
+.view.ng-leave{
+	@include fade-out();
+}
+
+.view.ng-enter{
+	@include fade-in();
+	animation-delay: $fadeTime;
+}
+
 
 .welcome{
-	  background: url("/img/landingphotoblue.jpg") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;	
+	width: 100%;
+}
+
+.page{
+	width: 85%;
+	height: 100%;
+	float: right;
+}
+
+.clear{clear:both;}
+
+html{
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;	
+}
+
+body {
+	background-color: transparent;
 }
 
 .center{
@@ -50,7 +81,7 @@ html{
 
 .welcome a{
     width: 28%;
-    margin-left: 34%;
+    margin-left: 35%;
     text-align: center;
 }
 
@@ -69,18 +100,23 @@ html{
     transition: all 0.5s;
 }
 
+h1{
+	padding-top: 10px;
+	text-transform: uppercase;
+	color: $brand !important;
+}
 
 .btn:hover{
-	background-color: $brandBlue;
+	background-color: $brand;
 }
 
 .btnWhite:hover{
 	color: white;
 }
 
-.btnBlue{
+.btnBrand{
 	@extend .btn;
-	background-color: $brandBlue; 
+	background-color: $brand; 
 }
 
 .btnGrey{
@@ -88,56 +124,20 @@ html{
 	background-color: $darkGrey; 
 }
 
-.btnLightBlue{
+.btnlightBrand{
 	@extend .btn;
-	background-color: $lightBlue;
+	background-color: $lightBrand;
 }
 
 .btnWhite{
 	@extend .btn;
     background-color: white;
-    color: $brandBlue;
+    color: $brand;
     margin-top: 35px;
-    width: 58%;
-    margin-left: 18%;
     font-weight: bold;
     text-transform: uppercase;
-}
-
-.home .sidebar{
-	width: 20%;
-	float: left;
-	height: 100%;
-	background-color: $darkGrey;
-}
-
-.home .sidebar .logo
-{
-	max-width: 70%;
-    padding-left: 15%;
-    padding-right: 15%;
-    padding-top: 48px;
-    padding-bottom: 45px;
-    background-color:$brandBlue;
-    -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;	
-}
-
-.social .icon{
-	max-width: 50px;
-	padding-top: 10px;
-	padding-bottom: 5px;
-}
-
-.social{
-	padding-left:11%;
-    margin-left: 18%;
-    margin-top: 35px;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
-    margin-right: 16%;
+    margin-left:20px;
+    margin-right:20px;
 }
 
 
@@ -164,17 +164,13 @@ html{
 	to 		{ transform: translateX(-100%); }
 }
 
-.ng-leave{
-	@include animation(fadeOut);
-}
-
-.ng-enter{
-	@include animation(fadeIn);
+.banner{
+	width: 100%;
 }
 
 .sidebar .nav{
 	text-align: center;
-	padding-left: 10px;
+	padding-left: 0;
 	list-style-type:none !important;
 }
 
@@ -190,5 +186,153 @@ html{
 }
 
 .sidebar .nav a:hover{
-	color: $lightBlue !important;
+	color: $lightBrand !important;
+}
+.sidebar{
+	width: 15%;
+	float: left;
+	min-height: 100%;    
+	background-color: $darkGrey;
+	position: absolute;
+	left: 0px;
+	z-index: 1;
+}
+
+.sidebar .logo
+{
+	width: 100%;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 48px;
+    padding-bottom: 45px;
+    background-color:$brand;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;	
+}
+
+.social .icon{
+	max-width: 50px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.social{
+	text-align: center;
+    margin-top: 35px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+.content{
+	padding-left: 80px;
+	padding-top: 30px;
+	margin-right: 10%;
+    line-height: 28px; 
+    margin-bottom: 100px;
+    color: $darkGrey;
+}
+
+.section hr{
+	margin: 50px 0px;
+}
+
+a{
+	text-decoration: none;
+	color: $brand;
+}
+
+a:hover{
+	color: $lightBrand;
+}
+
+.btnBrand.ng-leave{
+     display: none !important;
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Styles */
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #999999;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #fff;
+    background: none;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
 }

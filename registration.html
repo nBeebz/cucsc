@@ -1,0 +1,85 @@
+<div ng-controller="RegisterController" ng-init="confirm = false">
+<form name="registration">
+
+  <div class="form-group">
+    <label for="fname">{{ page.fname }}*</label>
+    <input ng-model="person.fname" id="fname" name="fname" type="text" class="form-control" ng-readonly="confirm" required/>
+  </div>
+  
+  <div class="form-group">
+    <label for="lname">{{ page.lname }}*</label>
+    <input ng-model="person.lname" id="lname" name="lname" type="text" class="form-control" ng-readonly="confirm" required/>
+  </div>
+  
+  <div class="form-group">
+    <label for="email">{{ page.email }}*</label>
+    <input ng-model="person.email" id="email"  type="email" name="email" class="form-control" ng-readonly="confirm" required/>
+  </div>
+  
+  <div class="form-group">
+    <label for="school">{{ page.school }}*</label>
+    <input ng-model="person.school" id="school" type="text" name="school" class="form-control" ng-readonly="confirm" required/>
+  </div>
+  
+  <div class="form-group">
+    <label for="activity">{{ page.activity }}</label>
+    <input type="checkbox" ng-model="person.activity" id="activity" class="form-control" ng-disabled="confirm" />
+  </div>
+
+  <div class="form-group">
+    <label for="residence">{{ page.residence }}</label>
+    <input type="checkbox" ng-model="person.residence" id="residence" class="form-control" ng-disabled="confirm" />
+  </div>
+
+  <div class="form-group">
+    <label for="speaker">{{ page.speaker }}</label>
+    <input type="checkbox" ng-model="person.speaker" id="speaker" class="form-control" ng-disabled="confirm" />
+  </div>
+  
+  
+  <div ng-if="person.speaker">
+    <label for="abstractTitle">{{page.abstractTitle}}</label>
+    <input ng-model="person.abstract.title" id="abstractTitle" type="text" class="form-control" ng-readonly="confirm" />
+    <label for="abstractText">{{page.abstractText}}</label>
+    <textarea ng-model="person.abstract.text" id="abstractText" class="form-control" ng-readonly="confirm"></textarea>
+    <label for="bursary">{{ page.bursary }}</label><input ng-model="person.abstract.bursary" id="bursary" type="checkbox" class="form-control" ng-disabled="confirm" />
+  </div>
+</form>
+
+  <a class="btnBrand" ng-if="!confirm && registration.$valid" href="" ng-click="confirmation(true)">Confirm</a>
+  <a class="btnBrand" ng-if="confirm" href="" ng-click="confirmation(false)">Edit</a>
+  <a class="btnBrand" ng-if="confirm" href="" ng-click="clearData()">Clear Data</a>
+
+<div ng-if="confirm && registration.$valid">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" ng-if="!person.activity && !person.residence">
+  Early Bird Ticket: $90.00 CAD <br>
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="5E5NKH42HSA82">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" ng-click="log('Early Bird Ticket')">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" ng-if="person.activity && !person.residence">
+Early Bird Ticket + Craft Brewery Tour: $140.00 CAD <br>
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="3FNE484J5QMCS">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!" ng-click="log('Early Bird Ticket + Activity')">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" ng-if="person.activity && person.residence">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="UW3LR8QSMHN9S">
+<table>
+<tr><td><input type="hidden" name="on0" value="Early Bird Ticket + Craft Beer Tour + Acommodations">Early Bird Ticket + Craft Beer Tour + Acommodations</td></tr><tr><td><select name="os0" ng-model="payment" ng-init="payment = 'Ticket + Craft Beer Tour + 4 Nights'">
+  <option value="Ticket + Craft Beer Tour + 3 Nights">Ticket + Craft Beer Tour + 3 Nights $245.00 CAD</option>
+  <option value="Ticket + Craft Beer Tour + 4 Nights">Ticket + Craft Beer Tour + 4 Nights $275.00 CAD</option>
+</select> </td></tr>
+</table>
+<input type="hidden" name="currency_code" value="CAD">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!"  ng-click="log(payment)">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+</div>
+
+</div>

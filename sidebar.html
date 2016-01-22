@@ -1,0 +1,13 @@
+<div class="sidebar">
+	<img src="img/WhiteIconPNG.png" alt="" class="logo">
+	<a id="register" href="{{lang}}/register" class="btnWhite">Register</a>
+	<div class="social">
+		<a href=""><img src="img/IconFacebook.png" class="icon"></img></a>
+		<a href=""><img src="img/IconMail.png" class="icon"></img></a>
+	</div>
+	<ul class="nav">
+		<li ng-repeat="link in pages">
+			<a href="{{ lang }}/{{link.id}}">{{link.title}}</a>
+		</li>
+	</ul>
+</div>

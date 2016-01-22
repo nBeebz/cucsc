@@ -1,0 +1,18 @@
+<div ng-if="noSidebar == undefined" ng-include="'sidebar.html'" ng-cont></div>
+<div class="page">
+	<div class="row">
+	<img class="banner" src="img/AboutPhoto.jpg" alt="" class="col-lg-12"/>
+	</div>
+	<div class="content">
+		<h1>Payment Cancellation</h1>
+		<div class="section" >
+			<hr>
+			<div class="text">
+				It seems you have cancelled your payment. We hope you change your mind!
+				<br>
+				You will be redirected in 5 seconds...
+			</div>
+		</div>
+		<div ng-if="page.id == 'register'" ng-include="'registration.html'"></div>
+	</div>
+</div>
